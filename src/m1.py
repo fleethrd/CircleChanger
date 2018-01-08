@@ -26,7 +26,7 @@ def main():
     That is, a  TEST   function will not be called
     until you begin work on the code that it is testing.
     """
-    if m1_tests.is_implemented('__init__', 20):
+    if m1_tests.is_implemented('__init__', 10):
         run_test_init()
     if m1_tests.is_implemented('get_distance_from'):
         run_test_get_distance_from()
@@ -102,8 +102,7 @@ class CircleChanger(object):
         # TEST function before implementing the method that it tests.
         ################################################################
 
-        self.center = rg.Point(x, y)
-        self.circle = rg.Circle(self.center, radius)
+        self.circle = rg.Circle(rg.Point(x, y), radius)
         self.circle.fill_color = fill_color
         self.colors = colors
         self.wraps = 0
@@ -385,11 +384,16 @@ class CircleChanger(object):
         #   NO CREDIT if you use the distance formula here.
         ################################################################
 
-        radius = self.center.get_distance_from(other_circle_changer.center) / 2
+        radius = self.circle.center.get_distance_from(
+            other_circle_changer.circle.center) / 2
         colors = self.colors + other_circle_changer.colors
-        x = (self.center.x + other_circle_changer.center.x) / 2  # not the
+        x = (self.circle.center.x + other_circle_changer.circle.center.x) / \
+            2  # not
+        #  the
         # distance formula
-        y = (self.center.y + other_circle_changer.center.y) / 2  # not the
+        y = (self.circle.center.y + other_circle_changer.circle.center.y) / \
+            2  # not
+        #  the
         # distance formula
         return CircleChanger(x, y, radius, 'red', colors)
 
